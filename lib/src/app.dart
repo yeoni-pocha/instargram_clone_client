@@ -9,9 +9,7 @@ class App extends GetView<BottomNavController> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async {
-          return false;
-        },
+        onWillPop: controller.willPopAction,
         child: Obx(
           () => Scaffold(
             appBar: AppBar(),
