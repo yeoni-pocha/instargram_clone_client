@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
           const SizedBox(width: 5),
           ...List.generate(
               100,
-              (index) => const AvatarWidget(type: AvatarType.TYPE1, thumbPath: 'http://blog.jinbo.net/attach/615/200937431.jpg'),
+              (index) => const AvatarWidget(type: AvatarType.TYPE1, thumbPath: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU'),
           ),
         ]
         )
