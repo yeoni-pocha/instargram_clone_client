@@ -10,7 +10,7 @@ class AvatarWidget extends StatelessWidget {
   final bool? hasStory;
   final String? nickname;
   final String thumbPath;
-  const AvatarWidget({required this.type, this.size=60, this.hasStory, this.nickname, required this.thumbPath, Key? key}) : super(key: key);
+  const AvatarWidget({required this.type, this.size=65, this.hasStory, this.nickname, required this.thumbPath, Key? key}) : super(key: key);
 
   Widget Type1Widget() {
     return Container(
@@ -52,6 +52,7 @@ class AvatarWidget extends StatelessWidget {
       children: [
         Type1Widget(),
         Text(nickname ?? '', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+
       ],
     );
   }

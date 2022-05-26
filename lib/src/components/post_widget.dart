@@ -13,14 +13,14 @@ class PostWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const AvatarWidget(type: AvatarType.TYPE3, nickname: '여니포차', size: 30, thumbPath: 'http://blog.jinbo.net/attach/615/200937431.jpg'),
+          const AvatarWidget(type: AvatarType.TYPE3,nickname: '여니포차', size: 40, thumbPath: 'http://blog.jinbo.net/attach/615/200937431.jpg'),
           GestureDetector(
             onTap: () {},
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ImageData(
                 IconsPath.postMoreIcon,
-                width: 40,
+                width: 30,
               ),
             ),
           )
@@ -31,7 +31,7 @@ class PostWidget extends StatelessWidget {
 
   Widget _image() {
     return CachedNetworkImage(
-      imageUrl: "https://trendsafari.co.kr/wp-content/uploads/2021/07/%EB%9D%BC%EC%9D%B4%EC%96%B8%EC%B6%98%EC%8B%9D%EC%9D%B4.png"
+        imageUrl: "https://trendsafari.co.kr/wp-content/uploads/2021/07/%EB%9D%BC%EC%9D%B4%EC%96%B8%EC%B6%98%EC%8B%9D%EC%9D%B4.png"
     );
   }
 
@@ -42,13 +42,12 @@ class PostWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ImageData(IconsPath.likeOffIcon, width: 65),
               const SizedBox(width: 15),
               ImageData(IconsPath.replyIcon, width: 60),
               const SizedBox(width: 15),
-              ImageData(IconsPath.directMessage, width: 57),
+              ImageData(IconsPath.directMessage, width: 55),
             ],
           ),
           ImageData(IconsPath.bookMarkOffIcon, width: 50)
@@ -73,7 +72,7 @@ class PostWidget extends StatelessWidget {
             prefixStyle: const TextStyle(fontWeight: FontWeight.bold),
             expandText: '더보기',
             collapseText: '접기',
-            maxLines: 2,
+            maxLines: 3,
             expandOnTextTap: true,
             collapseOnTextTap: true,
             linkColor: Colors.grey,
@@ -112,11 +111,11 @@ class PostWidget extends StatelessWidget {
           _image(),
           const SizedBox(height: 15),
           _infoCount(),
-          const SizedBox(height: 7),
+          const SizedBox(height: 5),
           _infoDescription(),
-          const SizedBox(height: 7),
+          const SizedBox(height: 5),
           _replyTextBtn(),
-          const SizedBox(height: 7),
+          const SizedBox(height: 5),
           _dateAgo(),
         ],
       ),

@@ -43,7 +43,8 @@ class Home extends StatelessWidget {
               100,
               (index) => const AvatarWidget(type: AvatarType.TYPE1, thumbPath: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU'),
           ),
-      ])
+        ]
+        )
     );
   }
   Widget _postList() {

@@ -18,14 +18,7 @@ class App extends GetView<BottomNavController> {
               index: controller.pageIndex.value,
               children: [
                 const Home(),
-                Navigator(
-                  key: controller.searchPageNavigationKey,
-                  onGenerateRoute: (routeSetting) {
-                    return MaterialPageRoute(
-                        builder: (context) => const Search()
-                    );
-                  },
-                ),
+                const Search(),
                 Container(child: Center(child: Text('UPLOAD'))),
                 Container(child: Center(child: Text('ACTIVITE'))),
                 Container(child: Center(child: Text('MYPAGE'))),
