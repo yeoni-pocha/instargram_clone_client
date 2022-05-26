@@ -8,7 +8,9 @@ import 'package:instargram_clone/src/pages/upload.dart';
 enum PageName{HOME, SEARCH, UPLOAD, ACTIVITY, MYPAGE}
 
 class BottomNavController extends GetxController {
+  static BottomNavController get to => Get.find();
 
+  GlobalKey<NavigatorState> searchPageNavigationKey = GlobalKey<NavigatorState>();
   RxInt pageIndex = 0.obs;
   List<int> bottomHistory = [0];
 
@@ -51,11 +53,17 @@ class BottomNavController extends GetxController {
       );
       return true;
     } else {
+      var page = PageName.values[bottomHistory.last];
+      if(page == PageName.SEARCH) {
+        var value = await searchPageNavigationKey.currentState!.maybePop();
+        if(value) {
+          return false;
+        }
+      }
       bottomHistory.removeLast();
       var index = bottomHistory.last;
       changeBottomNav(index, hasGesture: false);
       return false;
     }
   }
-
 }
