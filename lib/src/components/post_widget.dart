@@ -31,7 +31,7 @@ class PostWidget extends StatelessWidget {
 
   Widget _image() {
     return CachedNetworkImage(
-      imageUrl: "https://trendsafari.co.kr/wp-content/uploads/2021/07/%EB%9D%BC%EC%9D%B4%EC%96%B8%EC%B6%98%EC%8B%9D%EC%9D%B4.png"
+      imageUrl: "https://images.mypetlife.co.kr/content/uploads/2019/12/09151959/%EC%8B%AC%EC%8B%AC%ED%95%9C_%EA%B3%A0%EC%96%91%EC%9D%B42.png"
     );
   }
 
