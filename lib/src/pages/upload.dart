@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instargram_clone/src/components/image_data.dart';
 import 'package:photo_manager/photo_manager.dart';
 
@@ -91,36 +92,34 @@ class _UploadState extends State<Upload> {
                     )
                   ),
                   builder: (_) {
-                    return Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Center(
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 7),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.black54
-                              ),
-                              width: 40,
-                              height: 4,
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Center(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 7),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black54
+                            ),
+                            width: 40,
+                            height: 4,
+                          ),
+                        ),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: List.generate(albums.length,
+                                      (index) => Container(
+                                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                                      child: Text(albums[index].name)
+                                  )
+                              )
                             ),
                           ),
-                          Expanded(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: List.generate(albums.length,
-                                        (index) => Container(
-                                        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                                        child: Text(albums[index].name)
-                                    )
-                                )
-                              ),
-                            ),
-                          )
-                        ]
-                      ),
+                        )
+                      ]
                     );
               });
             },
@@ -215,7 +214,7 @@ class _UploadState extends State<Upload> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: GestureDetector(
-          onTap: () {},
+          onTap: Get.back,
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: ImageData(IconsPath.closeImage),

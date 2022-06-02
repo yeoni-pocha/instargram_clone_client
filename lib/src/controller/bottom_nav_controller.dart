@@ -18,7 +18,7 @@ class BottomNavController extends GetxController {
     var page = PageName.values[value];
     switch (page) {
       case PageName.UPLOAD:
-        Get.to(()=> Upload());
+        Get.to(()=> const Upload());
         break;
       case PageName.HOME:
       case PageName.SEARCH:
