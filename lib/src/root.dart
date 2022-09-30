@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instargram_clone/src/app.dart';
-import 'package:instargram_clone/src/controller/AuthController.dart';
+import 'package:instargram_clone/src/controller/auth_controller.dart';
 import 'package:instargram_clone/src/models/instagram_user.dart';
 import 'package:instargram_clone/src/pages/login.dart';
 import 'package:instargram_clone/src/pages/signup_page.dart';

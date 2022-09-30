@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instargram_clone/src/components/avatar_widget.dart';
 import 'package:instargram_clone/src/components/image_data.dart';
 import 'package:instargram_clone/src/components/user_card.dart';
+import 'package:instargram_clone/src/controller/auth_controller.dart';
+import 'package:instargram_clone/src/controller/mypage_controller.dart';
 
-class MyPage extends StatefulWidget {
+class MyPage extends GetView<MypageController> {
+
   const MyPage({Key? key}) : super(key: key);
-
-  @override
-  State<MyPage> createState() => _MyPageState();
-}
-
-class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
-
-  late TabController tabController = TabController(length: 2, vsync: this);
 
   Widget _statisticsOne(String title, int value) {
     return Column(
@@ -26,14 +22,14 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
   Widget _information() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
+      child: Obx(()=> Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             children: [
-              const AvatarWidget(
+              AvatarWidget(
                 type: AvatarType.TYPE3,
-                thumbPath: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD-FPrClXiolofgRtHq_yf7p-K9XyZegxD3dqrYbMSba67vBVVighWoXZeRyOWqFl40FQ&usqp=CAU",
+                thumbPath: controller.targetUser.value.thumbnail!,
                 size: 80,
               ),
               const SizedBox(width: 10),
@@ -50,9 +46,9 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
             ],
           ),
           const SizedBox(height: 10),
-          const Text('안녕하세요. 여니포차 입니다. 구독과 좋아요 부탁드려요~!', style: TextStyle(fontSize: 13, color: Colors.black)),
+          Text(controller.targetUser.value.description!, style: const TextStyle(fontSize: 13, color: Colors.black)),
         ],
-      ),
+      )),
     );
   }
 
@@ -112,7 +108,7 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
 
   Widget _tabMenu() {
     return TabBar(
-      controller: tabController,
+      controller: controller.tabController,
       indicatorColor: Colors.black,
       indicatorWeight: 1,
       tabs: [
@@ -153,7 +149,11 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        title: const Text('여니포차', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+        title:
+          Obx(()=> Text(
+            controller.targetUser.value.nickname!,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+          ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 5),
