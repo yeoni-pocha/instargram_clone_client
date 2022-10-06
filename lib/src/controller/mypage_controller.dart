@@ -17,7 +17,6 @@ class MypageController extends GetxController with SingleGetTickerProviderMixin 
 
   void setTargetUser() {
     var uid = Get.parameters['targetUid'];
-    print(uid);
     if(uid == null) {
       targetUser(AuthController.to.user.value);
     } else {

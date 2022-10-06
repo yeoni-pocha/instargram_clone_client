@@ -3,17 +3,22 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:instargram_clone/src/components/avatar_widget.dart';
 import 'package:instargram_clone/src/components/image_data.dart';
+import 'package:instargram_clone/src/models/post.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class PostWidget extends StatelessWidget {
-  const PostWidget({Key? key}) : super(key: key);
+
+  final Post post;
+  const PostWidget({Key? key, required this.post}) : super(key: key);
 
   Widget _header() {
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const AvatarWidget(type: AvatarType.TYPE3, nickname: '여니포차', size: 30, thumbPath: 'http://blog.jinbo.net/attach/615/200937431.jpg'),
+          AvatarWidget(type: AvatarType.TYPE3, nickname: post.userInfo!.nickname!, size: 30, thumbPath: post.userInfo!.thumbnail!),
           GestureDetector(
             onTap: () {},
             child: Padding(
@@ -31,7 +36,7 @@ class PostWidget extends StatelessWidget {
 
   Widget _image() {
     return CachedNetworkImage(
-      imageUrl: "https://images.mypetlife.co.kr/content/uploads/2019/12/09151959/%EC%8B%AC%EC%8B%AC%ED%95%9C_%EA%B3%A0%EC%96%91%EC%9D%B42.png"
+      imageUrl: post.thumbnail!
     );
   }
 
@@ -63,12 +68,11 @@ class PostWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text('좋아요 150개', style: TextStyle(fontWeight: FontWeight.bold)),
+          Text('좋아요 ${post.likeCount ?? 0}개', style: const TextStyle(fontWeight: FontWeight.bold)),
           ExpandableText(
-            '콘텐츠 1입니다.\n콘텐츠 111입니다.\n콘텐츠 1111입니다.\n콘텐츠 1111111입니다.',
-            prefixText: '여니포차',
+            post.description ?? '',
+            prefixText: post.userInfo!.nickname,
             onPrefixTap: () {
-              print('여니포차로 이동');
             },
             prefixStyle: const TextStyle(fontWeight: FontWeight.bold),
             expandText: '더보기',
@@ -94,9 +98,9 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget _dateAgo(){
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
-      child: Text('1일 전', style: TextStyle(color: Colors.grey, fontSize: 11)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: Text(timeago.format(post.createdAt!), style: const TextStyle(color: Colors.grey, fontSize: 11)),
     );
   }
 
